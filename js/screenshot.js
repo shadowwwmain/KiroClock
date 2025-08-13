@@ -148,17 +148,16 @@ Object.assign(ShadowKiroClock.prototype, {
                     height: 1080,
                     scale: 1
                 });
-                this.downloadCanvas(canvas, 'shadow-kiro-clock-screenshot.png');
+                await this.copyCanvasToClipboard(canvas);
             } else {
                 // Fallback: create canvas manually
-                this.createCanvasScreenshot();
+                await this.createCanvasScreenshot();
             }
             
             // Remove temporary container
             document.body.removeChild(screenshotContainer);
             
-            // Show success feedback
-            this.showNotification('Screenshot saved successfully!', 'success');
+            // Success notification is handled in copyCanvasToClipboard
             
         } catch (error) {
             console.error('Screenshot failed:', error);
@@ -166,7 +165,7 @@ Object.assign(ShadowKiroClock.prototype, {
         }
     },
     
-    createCanvasScreenshot() {
+    async createCanvasScreenshot() {
         const canvas = this.screenshotCanvas;
         const ctx = canvas.getContext('2d');
         
@@ -236,7 +235,30 @@ Object.assign(ShadowKiroClock.prototype, {
         ctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
         ctx.fillText(window.location.href, 40, canvas.height - 40);
         
-        this.downloadCanvas(canvas, 'shadow-kiro-clock-screenshot.png');
+        await this.copyCanvasToClipboard(canvas);
+    },
+    
+    async copyCanvasToClipboard(canvas) {
+        try {
+            // Convert canvas to blob
+            const blob = await new Promise(resolve => {
+                canvas.toBlob(resolve, 'image/png');
+            });
+            
+            // Copy to clipboard using the Clipboard API
+            await navigator.clipboard.write([
+                new ClipboardItem({
+                    'image/png': blob
+                })
+            ]);
+            
+            this.showNotification('Screenshot copied to clipboard!', 'success');
+        } catch (error) {
+            console.error('Failed to copy to clipboard:', error);
+            // Fallback to download if clipboard fails
+            this.downloadCanvas(canvas, 'shadow-kiro-clock-screenshot.png');
+            this.showNotification('Screenshot downloaded (clipboard not supported)', 'success');
+        }
     },
     
     downloadCanvas(canvas, filename) {

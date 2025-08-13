@@ -12,22 +12,24 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shadow-kiro-clock.com/">
+    <meta property="og:url" content="https://shadowkiroclock.netlify.app/">
     <meta property="og:title" content="Shadow Kiro Clock - Countdown to Kiro's Midnight">
     <meta property="og:description"
-        content="Real-time countdown to when Kiro's timezone (UTC) hits 00:00. Features interactive themes, zoom controls, and screenshot capture.">
-    <meta property="og:image" content="https://shadow-kiro-clock.com/assets/kiro-preview.png">
+        content="Real-time countdown to when Kiro's timezone (UTC) hits 00:00. Features interactive themes, zoom controls, screenshot capture, and a built-in Kiro-Man minigame!">
+    <meta property="og:image" content="https://shadowkiroclock.netlify.app/assets/kiro-preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Shadow Kiro Clock showing countdown timer with cosmic background">
     <meta property="og:site_name" content="Shadow Kiro Clock">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://shadow-kiro-clock.com/">
+    <meta property="twitter:url" content="https://shadowkiroclock.netlify.app/">
     <meta property="twitter:title" content="Shadow Kiro Clock - Countdown to Kiro's Midnight">
     <meta property="twitter:description"
-        content="Real-time countdown to when Kiro's timezone (UTC) hits 00:00. Features interactive themes, zoom controls, and screenshot capture.">
-    <meta property="twitter:image" content="https://shadow-kiro-clock.com/assets/kiro-preview.png">
+        content="Real-time countdown to when Kiro's timezone (UTC) hits 00:00. Features interactive themes, zoom controls, screenshot capture, and a built-in Kiro-Man minigame!">
+    <meta property="twitter:image" content="https://shadowkiroclock.netlify.app/assets/kiro-preview.png">
+    <meta property="twitter:image:alt" content="Shadow Kiro Clock showing countdown timer with cosmic background">
 
     <!-- Additional Meta Tags -->
     <meta name="description"
@@ -208,8 +210,8 @@
                 <h3>Actions</h3>
                 <div class="controls-row">
                     <button class="neon-button accent" id="screenshotBtn">
-                        <span class="button-icon">📸</span>
-                        <span>SCREENSHOT</span>
+                        <span class="button-icon">📋</span>
+                        <span>COPY IMAGE</span>
                     </button>
                     <button class="neon-button accent" id="fullscreenBtn">
                         <span class="button-icon">⛶</span>
@@ -281,7 +283,7 @@
     <!-- Hidden Elements -->
     <canvas id="screenshotCanvas" style="display: none;"></canvas>
     <div id="notificationContainer" class="notification-container"></div>
-    
+
     <!-- Minigame Modal -->
     <div id="minigameModal" class="minigame-modal">
         <div class="minigame-container">
