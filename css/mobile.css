@@ -1,0 +1,445 @@
+/* Mobile-first responsive styles for Shadow Kiro Clock */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--space-xs);
+        gap: var(--space-sm);
+    }
+    
+    .header-section {
+        margin-bottom: var(--space-md);
+    }
+    
+    .logo-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .main-title {
+        font-size: var(--font-2xl);
+        letter-spacing: 0.2em;
+    }
+    
+    .subtitle {
+        font-size: var(--font-base);
+    }
+    
+    /* Status bar - stack on mobile */
+    .status-bar {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
+        max-width: 300px;
+    }
+    
+    .status-item {
+        padding: var(--space-xs);
+    }
+    
+    .status-label {
+        font-size: var(--font-xs);
+    }
+    
+    .status-value {
+        font-size: var(--font-sm);
+    }
+    
+    /* Clock - stack vertically on mobile */
+    .clock-frame {
+        padding: var(--space-md);
+    }
+    
+    .clock-inner {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .separator-container {
+        display: none;
+    }
+    
+    .time-segment {
+        min-width: auto;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .time-value {
+        font-size: var(--font-4xl);
+    }
+    
+    .time-label {
+        font-size: var(--font-sm);
+    }
+    
+    /* Info grid - single column on mobile */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xs);
+    }
+    
+    .info-card {
+        padding: var(--space-xs);
+    }
+    
+    .info-icon {
+        font-size: var(--font-lg);
+    }
+    
+    .info-content h3 {
+        font-size: var(--font-xs);
+    }
+    
+    .info-content p {
+        font-size: var(--font-sm);
+    }
+    
+    /* Control panel - stack buttons */
+    .control-panel {
+        gap: var(--space-sm);
+    }
+    
+    .control-group {
+        padding: var(--space-sm);
+    }
+    
+    .control-group h3 {
+        font-size: var(--font-sm);
+    }
+    
+    .controls-row {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xs);
+    }
+    
+    .neon-button {
+        width: 100%;
+        max-width: 200px;
+        padding: var(--space-sm);
+        font-size: var(--font-xs);
+        min-width: auto;
+    }
+    
+    .button-icon {
+        font-size: var(--font-sm);
+    }
+    
+    /* Footer */
+    .footer {
+        padding: var(--space-sm);
+        margin-top: var(--space-lg);
+    }
+    
+    .footer-content p {
+        font-size: var(--font-sm);
+    }
+    
+    .footer-stats {
+        flex-direction: column;
+        gap: var(--space-xs);
+        font-size: var(--font-xs);
+    }
+    
+    /* Copyright section mobile */
+    .creator-info {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: center;
+    }
+    
+    .discord-avatar {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .creator-name {
+        font-size: var(--font-sm);
+    }
+    
+    .github-link {
+        font-size: var(--font-xs);
+        padding: var(--space-xs);
+    }
+    
+    .github-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .copyright-text {
+        font-size: var(--font-xs);
+    }
+    
+    /* Minigame mobile styles */
+    .minigame-container {
+        padding: var(--space-md);
+        margin: var(--space-sm);
+    }
+    
+    .minigame-header h2 {
+        font-size: var(--font-lg);
+    }
+    
+    .close-btn {
+        width: 35px;
+        height: 35px;
+        font-size: var(--font-lg);
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: var(--space-xs);
+        text-align: center;
+    }
+    
+    .control-instructions p {
+        font-size: var(--font-xs);
+    }
+    
+    .game-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .game-buttons .neon-button {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    /* Notifications */
+    .notification-container {
+        top: var(--space-sm);
+        right: var(--space-sm);
+        left: var(--space-sm);
+    }
+    
+    .notification {
+        max-width: none;
+        font-size: var(--font-xs);
+        padding: var(--space-xs) var(--space-sm);
+    }
+    
+    /* Orbital rings - hide on mobile for performance */
+    .orbital-ring {
+        display: none;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: var(--space-xs);
+    }
+    
+    .main-title {
+        font-size: var(--font-xl);
+        letter-spacing: 0.1em;
+    }
+    
+    .subtitle {
+        font-size: var(--font-sm);
+    }
+    
+    .clock-frame {
+        padding: var(--space-sm);
+        margin: var(--space-sm) 0;
+    }
+    
+    .time-value {
+        font-size: var(--font-3xl);
+    }
+    
+    .status-bar {
+        max-width: 250px;
+    }
+    
+    .info-panel {
+        margin: var(--space-sm) 0;
+    }
+    
+    .control-panel {
+        margin: var(--space-sm) 0;
+    }
+    
+    /* Reduce floating particles on small screens */
+    .floating-particles .particle:nth-child(n+6) {
+        display: none;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        justify-content: flex-start;
+        padding-top: var(--space-xs);
+    }
+    
+    .header-section {
+        margin-bottom: var(--space-sm);
+    }
+    
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .main-title {
+        font-size: var(--font-xl);
+    }
+    
+    .subtitle {
+        font-size: var(--font-sm);
+    }
+    
+    .clock-inner {
+        flex-direction: row;
+        gap: var(--space-sm);
+    }
+    
+    .separator-container {
+        display: flex;
+    }
+    
+    .time-value {
+        font-size: var(--font-2xl);
+    }
+    
+    .status-bar {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 500px;
+    }
+    
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .controls-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .neon-button {
+        max-width: 120px;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: var(--space-md);
+    }
+    
+    .status-bar {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 700px;
+    }
+    
+    .clock-inner {
+        gap: var(--space-lg);
+    }
+    
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .control-panel {
+        max-width: 700px;
+    }
+    
+    .controls-row {
+        gap: var(--space-sm);
+    }
+}
+
+/* Large screens */
+@media (min-width: 1025px) {
+    .container {
+        padding: var(--space-lg);
+    }
+    
+    .status-bar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .info-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .control-panel {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-lg);
+    }
+    
+    .control-group {
+        flex: 1;
+        max-width: 250px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .orbital-ring {
+        animation: none;
+    }
+    
+    .floating-particles {
+        display: none;
+    }
+    
+    .logo-image {
+        animation: none;
+    }
+    
+    .main-title {
+        animation: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default, but can add specific dark mode tweaks here */
+}
+
+/* Print styles */
+@media print {
+    .floating-particles,
+    .orbital-ring,
+    .control-panel,
+    .notification-container {
+        display: none !important;
+    }
+    
+    .container {
+        background: white;
+        color: black;
+    }
+    
+    .main-title,
+    .time-value,
+    .status-value {
+        color: black !important;
+        text-shadow: none !important;
+    }
+}

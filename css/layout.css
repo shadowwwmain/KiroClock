@@ -1,0 +1,489 @@
+/* Layout and component styles for Shadow Kiro Clock */
+
+/* Header Section */
+.header-section {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.logo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--space-md);
+}
+
+.kiro-logo {
+    position: relative;
+    display: inline-block;
+    animation: logoFloat 6s ease-in-out infinite;
+    padding: var(--space-sm);
+}
+
+/* Nixie tube-inspired logo container */
+.kiro-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 40%, transparent 70%),
+        linear-gradient(45deg, rgba(var(--primary-color), 0.1) 0%, rgba(var(--secondary-color), 0.1) 100%);
+    border-radius: 25px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 
+        0 0 20px var(--glow-primary),
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        inset 0 0 40px rgba(var(--primary-color), 0.1);
+    animation: nixieGlow 3s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+/* Nixie tube glass effect */
+.kiro-logo::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        transparent 30%, 
+        transparent 70%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.logo-image {
+    width: clamp(70px, 15vw, 110px);
+    height: clamp(70px, 15vw, 110px);
+    border-radius: 18px;
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition-medium);
+    filter: 
+        drop-shadow(0 0 15px var(--glow-primary))
+        drop-shadow(0 0 30px var(--glow-primary))
+        brightness(1.1)
+        contrast(1.2);
+    animation: nixieFlicker 4s ease-in-out infinite;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    filter: 
+        drop-shadow(0 0 25px var(--glow-primary))
+        drop-shadow(0 0 50px var(--glow-primary))
+        brightness(1.3)
+        contrast(1.4);
+    animation-duration: 2s;
+}
+
+/* Nixie tube electrode effects */
+.kiro-logo .electrode {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-color), transparent);
+    opacity: 0.6;
+    animation: electrodeGlow 2s ease-in-out infinite alternate;
+}
+
+.kiro-logo .electrode:nth-child(1) {
+    top: 10px;
+    left: 20%;
+    height: 30px;
+    animation-delay: 0s;
+}
+
+.kiro-logo .electrode:nth-child(2) {
+    top: 10px;
+    right: 20%;
+    height: 30px;
+    animation-delay: 0.5s;
+}
+
+.kiro-logo .electrode:nth-child(3) {
+    bottom: 10px;
+    left: 30%;
+    height: 25px;
+    animation-delay: 1s;
+}
+
+.kiro-logo .electrode:nth-child(4) {
+    bottom: 10px;
+    right: 30%;
+    height: 25px;
+    animation-delay: 1.5s;
+}
+
+.main-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(var(--font-2xl), 6vw, var(--font-5xl));
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow:
+        0 0 20px var(--glow-primary),
+        0 0 40px var(--glow-primary),
+        0 0 60px var(--glow-primary);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.3em;
+    animation: titlePulse 4s ease-in-out infinite;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: clamp(var(--font-base), 2.5vw, var(--font-xl));
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* Status Bar - More Compact */
+.status-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    width: 100%;
+    max-width: 600px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-sm);
+    background: var(--bg-secondary);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-medium);
+}
+
+.status-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px var(--glow-primary);
+    transform: translateY(-2px);
+}
+
+.status-label {
+    font-size: var(--font-xs);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.status-value {
+    font-family: 'Orbitron', monospace;
+    font-size: var(--font-base);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-primary);
+}
+
+/* Main Clock - More Compact */
+.clock-container {
+    margin: var(--space-lg) 0;
+    transition: transform 0.3s ease;
+}
+
+.clock-frame {
+    position: relative;
+    padding: var(--space-lg);
+    background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    backdrop-filter: blur(15px);
+    box-shadow:
+        0 0 60px var(--glow-primary),
+        inset 0 0 60px rgba(0, 255, 255, 0.1),
+        0 0 120px rgba(0, 255, 255, 0.3);
+}
+
+.clock-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(var(--space-sm), 4vw, var(--space-lg));
+    position: relative;
+    z-index: 5;
+}
+
+.time-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: clamp(60px, 12vw, 100px);
+}
+
+.time-value-container {
+    position: relative;
+    margin-bottom: var(--space-sm);
+}
+
+.time-value {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(var(--font-3xl), 10vw, var(--font-6xl));
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow:
+        0 0 20px var(--glow-primary),
+        0 0 40px var(--glow-primary);
+    transition: all var(--transition-medium);
+    position: relative;
+    z-index: 2;
+}
+
+.time-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-color);
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: 1;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.time-label {
+    font-size: clamp(var(--font-xs), 1.8vw, var(--font-sm));
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    transition: width var(--transition-fast);
+    box-shadow: 0 0 10px var(--glow-primary);
+}
+
+.separator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.separator {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(var(--font-2xl), 8vw, var(--font-5xl));
+    font-weight: 900;
+    color: var(--secondary-color);
+    text-shadow: 0 0 20px var(--glow-secondary);
+    position: relative;
+    z-index: 2;
+}
+
+.separator-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: separatorGlow 2s ease-in-out infinite;
+}
+
+/* Orbital Rings */
+.orbital-ring {
+    position: absolute;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ring-1 {
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    animation: orbitRotate1 20s linear infinite;
+}
+
+.ring-2 {
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    animation: orbitRotate2 30s linear infinite reverse;
+    border-color: rgba(255, 0, 255, 0.15);
+}
+
+.ring-3 {
+    width: 160%;
+    height: 160%;
+    top: -30%;
+    left: -30%;
+    animation: orbitRotate3 40s linear infinite;
+    border-color: rgba(255, 255, 0, 0.1);
+}
+
+/* Animations */
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.5));
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+        filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.8));
+    }
+}
+
+@keyframes titlePulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 20px var(--glow-primary),
+            0 0 40px var(--glow-primary),
+            0 0 60px var(--glow-primary);
+    }
+
+    50% {
+        text-shadow:
+            0 0 30px var(--glow-primary),
+            0 0 60px var(--glow-primary),
+            0 0 90px var(--glow-primary);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes separatorGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes orbitRotate1 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes orbitRotate2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes orbitRotate3 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}/*
+ Nixie Tube Logo Animations */
+@keyframes nixieGlow {
+    0% { 
+        box-shadow: 
+            0 0 20px var(--glow-primary),
+            inset 0 0 20px rgba(0, 0, 0, 0.8),
+            inset 0 0 40px rgba(138, 43, 226, 0.1);
+        border-color: var(--primary-color);
+    }
+    100% { 
+        box-shadow: 
+            0 0 40px var(--glow-primary),
+            0 0 60px var(--glow-primary),
+            inset 0 0 30px rgba(0, 0, 0, 0.9),
+            inset 0 0 60px rgba(138, 43, 226, 0.2);
+        border-color: var(--secondary-color);
+    }
+}
+
+@keyframes nixieFlicker {
+    0%, 90%, 100% { 
+        opacity: 1;
+        filter: 
+            drop-shadow(0 0 15px var(--glow-primary))
+            drop-shadow(0 0 30px var(--glow-primary))
+            brightness(1.1)
+            contrast(1.2);
+    }
+    95% { 
+        opacity: 0.8;
+        filter: 
+            drop-shadow(0 0 10px var(--glow-primary))
+            drop-shadow(0 0 20px var(--glow-primary))
+            brightness(0.9)
+            contrast(1.1);
+    }
+}
+
+@keyframes electrodeGlow {
+    0% { 
+        opacity: 0.4;
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+    100% { 
+        opacity: 0.8;
+        box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--glow-primary);
+    }
+}

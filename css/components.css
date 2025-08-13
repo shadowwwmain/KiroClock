@@ -1,0 +1,558 @@
+/* Component styles for Shadow Kiro Clock */
+
+/* Info Panel - More Compact */
+.info-panel {
+    margin: var(--space-lg) 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-sm);
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--bg-secondary);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-medium);
+}
+
+.info-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 25px var(--glow-primary);
+    transform: translateY(-3px);
+}
+
+.info-icon {
+    font-size: var(--font-xl);
+    filter: grayscale(1);
+    transition: filter var(--transition-medium);
+    flex-shrink: 0;
+}
+
+.info-card:hover .info-icon {
+    filter: grayscale(0);
+}
+
+.info-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-content h3 {
+    font-size: var(--font-sm);
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+}
+
+.info-content p {
+    font-family: 'Orbitron', monospace;
+    font-size: var(--font-base);
+    color: var(--primary-color);
+    font-weight: 700;
+    word-break: break-word;
+}
+
+/* Control Panel - More Compact */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.control-group {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    padding: var(--space-md);
+    backdrop-filter: blur(10px);
+}
+
+.control-group h3 {
+    font-size: var(--font-base);
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.controls-row {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Enhanced Button Styles - More Compact */
+.neon-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-sm);
+    font-family: 'Rajdhani', monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-medium);
+    min-width: 100px;
+    justify-content: center;
+}
+
+.neon-button.primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.neon-button.secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.neon-button.accent {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.neon-button.theme-btn {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+}
+
+.neon-button.theme-btn.active {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 20px var(--glow-primary);
+}
+
+.button-icon {
+    font-size: var(--font-base);
+    flex-shrink: 0;
+}
+
+.neon-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.neon-button:hover::before {
+    left: 100%;
+}
+
+.neon-button:hover {
+    box-shadow:
+        0 0 25px currentColor,
+        inset 0 0 25px rgba(0, 255, 255, 0.1);
+    text-shadow: 0 0 10px currentColor;
+    transform: translateY(-2px);
+}
+
+.neon-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Footer - More Compact */
+.footer {
+    margin-top: var(--space-xl);
+    padding: var(--space-md);
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    text-align: center;
+    width: 100%;
+}
+
+.footer-content p {
+    font-size: var(--font-base);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+}
+
+.footer-stats span {
+    opacity: 0.7;
+}
+
+/* Copyright Section */
+.copyright-section {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.creator-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.discord-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-medium);
+    border: 1px solid transparent;
+}
+
+.discord-profile:hover {
+    border-color: rgba(114, 137, 218, 0.5);
+    box-shadow: 0 0 15px rgba(114, 137, 218, 0.3);
+    background: rgba(114, 137, 218, 0.1);
+}
+
+.discord-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(114, 137, 218, 0.5);
+    transition: all var(--transition-medium);
+}
+
+.discord-profile:hover .discord-avatar {
+    border-color: rgba(114, 137, 218, 1);
+    box-shadow: 0 0 10px rgba(114, 137, 218, 0.5);
+}
+
+.creator-name {
+    font-family: 'Rajdhani', monospace;
+    font-size: var(--font-base);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-medium);
+    font-family: 'Rajdhani', monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--font-sm);
+}
+
+.github-link:hover {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-medium);
+}
+
+.github-link:hover .github-icon {
+    transform: scale(1.1);
+}
+
+.copyright-text {
+    font-size: var(--font-sm);
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-family: 'Rajdhani', monospace;
+}
+
+/* Notification System */
+.notification-container {
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.notification {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px var(--glow-primary);
+    animation: slideInRight 0.3s ease;
+    max-width: 280px;
+    font-size: var(--font-sm);
+}
+
+.notification.success {
+    border-color: #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.notification.error {
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Animations */
+.time-value.changing {
+    animation: numberFlip 0.6s ease;
+}
+
+@keyframes numberFlip {
+    0% {
+        transform: rotateX(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateX(90deg) scale(1.1);
+        color: var(--secondary-color);
+    }
+
+    100% {
+        transform: rotateX(0deg) scale(1);
+    }
+}
+
+/* Zoom animations */
+.zooming {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Celebration effects */
+@keyframes celebrationFlash {
+
+    0%,
+    100% {
+        background-color: var(--bg-primary);
+    }
+
+    25% {
+        background-color: rgba(0, 255, 255, 0.1);
+    }
+
+    50% {
+        background-color: rgba(255, 0, 255, 0.1);
+    }
+
+    75% {
+        background-color: rgba(255, 255, 0, 0.1);
+    }
+}
+
+/* Particle effects */
+@keyframes particleExplosion {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0) rotate(360deg) translate(50px, 50px);
+        opacity: 0;
+    }
+}
+
+/* Minigame Modal */
+.minigame-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.minigame-container {
+    background: var(--bg-secondary);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 50px var(--glow-primary);
+    position: relative;
+}
+
+.minigame-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    padding-bottom: var(--space-sm);
+}
+
+.minigame-header h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: var(--font-xl);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 0;
+    text-shadow: 0 0 10px var(--glow-primary);
+}
+
+.close-btn {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: var(--font-xl);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-medium);
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: scale(1.1);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.game-info > div {
+    font-family: 'Rajdhani', monospace;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.game-info span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+#gameCanvas {
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background: #0a0a0a;
+    display: block;
+    margin: 0 auto var(--space-md);
+    box-shadow: 0 0 20px var(--glow-primary);
+}
+
+.game-controls {
+    text-align: center;
+}
+
+.control-instructions {
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+    font-family: 'Rajdhani', monospace;
+}
+
+.control-instructions p {
+    margin: var(--space-xs) 0;
+    font-size: var(--font-sm);
+}
+
+.game-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.game-buttons .neon-button {
+    min-width: 100px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
