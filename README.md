@@ -42,7 +42,7 @@ A futuristic countdown clock that tracks the time until Kiro's midnight (UTC 00:
 
 ## 🚀 Live Demo
 
-Visit the live site: [Shadow Kiro Clock](https://shadow-kiro-clock.com)
+Visit the live site: [Shadow Kiro Clock](https://shadowkiroclock.netlify.app/)
 
 ## 🛠️ Technologies Used
 
